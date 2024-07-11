@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.navigationcomponent.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/goToGameFragment"
+            app:destination="@id/gameFragment"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.navigationcomponent.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/goToEndFragment"
+            app:destination="@id/endFragment"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="nullName" />
+        <argument
+            android:name="level"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="kda"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <argument
+            android:name="isPlaying"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="game"
+            app:argType="com.example.navigationcomponent.Game"/>
+    </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.navigationcomponent.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" />
+</navigation>
